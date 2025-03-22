@@ -8,7 +8,8 @@
     "lint": "eslint ."
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./auth": "./src/auth.ts"
   },
   "devDependencies": {
     "@types/pg": "^8.11.11",
@@ -19,6 +20,8 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "@next/env": "^15.2.3",
+    "better-auth": "^1.2.4",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.41.0",
     "pg": "^8.14.1"
