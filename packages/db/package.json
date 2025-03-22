@@ -11,7 +11,6 @@
   "exports": {
     ".": "./src/index.ts",
     "./auth": "./src/auth.ts",
-    "./services": "./src/services/index.ts",
     "./schema": "./src/schema/index.ts"
   },
   "devDependencies": {

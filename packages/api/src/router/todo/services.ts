@@ -1,7 +1,6 @@
+import { DB } from "@repo/db";
+import { Todo, todos } from "@repo/db/schema";
 import { and, eq } from "drizzle-orm";
-import { DB } from "..";
-import { todos } from "../schema";
-import { Todo } from "../schema";
 
 export async function createTodo(db: DB, values: Todo) {
   const created = await db.insert(todos).values(values).returning();

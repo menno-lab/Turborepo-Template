@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { createTodo, getTodo, listTodos, updateTodo } from "@repo/db/services";
 import { createTRPCRouter } from "../../init";
 import { protectedProcedure } from "../../procedures";
 import { todoSchema } from "@repo/db/schema";
+import { createTodo, getTodo, listTodos, updateTodo } from "./services";
 
 export const todoRouter = createTRPCRouter({
   create: protectedProcedure
