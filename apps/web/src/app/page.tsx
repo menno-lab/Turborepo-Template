@@ -1,9 +1,5 @@
-import {
-  Alert,
-  AlertTitle,
-  AlertDescription,
-} from "@workspace/ui/components/alert";
-import { Button } from "@workspace/ui/components/button";
+import { Alert, AlertTitle, AlertDescription } from "@repo/ui/components/alert";
+import { Button } from "@repo/ui/components/button";
 import { Terminal } from "lucide-react";
 
 export default function Page() {
