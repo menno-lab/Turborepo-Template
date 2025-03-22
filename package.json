@@ -6,6 +6,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
     "db:push": "turbo @repo/db#push",
     "db:studio": "turbo @repo/db#studio",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

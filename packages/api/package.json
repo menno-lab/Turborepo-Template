@@ -1,32 +1,29 @@
 {
-  "name": "@repo/db",
+  "name": "@repo/api",
   "private": true,
   "type": "module",
   "scripts": {
-    "push": "drizzle-kit push",
-    "studio": "drizzle-kit studio",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "exports": {
     ".": "./src/index.ts",
-    "./auth": "./src/auth.ts",
-    "./schema": "./src/schema/index.ts"
+    "./router": "./src/router/index.ts"
   },
   "devDependencies": {
     "@types/pg": "^8.11.11",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
-    "drizzle-kit": "^0.30.5",
-    "tsx": "^4.19.3",
     "typescript": "latest"
   },
   "dependencies": {
-    "@next/env": "^15.2.3",
+    "@repo/db": "workspace:*",
+    "@trpc/server": "11.0.0-rc.833",
     "better-auth": "^1.2.4",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.41.0",
     "pg": "^8.14.1",
+    "superjson": "^2.2.2",
     "zod": "^3.24.2"
   }
 }
