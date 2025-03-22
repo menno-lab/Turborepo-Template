@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/lib/auth";
+import { auth } from "@repo/db/auth";
 import { redirect } from "next/navigation";
 
 export async function loginWithGoogle() {
