@@ -16,6 +16,12 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "push": {
+      "dependsOn": ["^push"]
+    },
+    "studio": {
+      "dependsOn": ["^studio"]
     }
   }
 }

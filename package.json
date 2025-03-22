@@ -1,11 +1,13 @@
 {
-  "name": "shadcn-ui-monorepo",
+  "name": "monorepo-template",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "db:push": "turbo @repo/db#push",
+    "db:studio": "turbo @repo/db#studio",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
