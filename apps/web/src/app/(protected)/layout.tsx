@@ -1,4 +1,5 @@
 import { getSession } from "@/lib/auth-client";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 interface ProtectedLayoutProps {
@@ -16,6 +17,10 @@ export default async function ProtectedLayout({
 
   return (
     <div>
+      <nav>
+        <Link href="/todos">Todos</Link>
+        <Link href="/todos/new">New</Link>
+      </nav>
       <span>Hello, {session.user?.name}</span>
       {children}
     </div>

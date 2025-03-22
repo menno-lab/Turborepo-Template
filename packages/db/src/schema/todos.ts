@@ -7,6 +7,7 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 import { user } from "./auth";
+import { z } from "zod";
 
 export const todos = pgTable("todos", {
   id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
@@ -22,3 +23,11 @@ export const todos = pgTable("todos", {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
 });
+
+export const todoSchema = z.object({
+  title: z.string().min(1, {
+    message: "Title is required",
+  }),
+});
+
+export type Todo = z.infer<typeof todoSchema>;

@@ -1,10 +1,8 @@
 import { Alert, AlertTitle, AlertDescription } from "@repo/ui/components/alert";
 import { Button } from "@repo/ui/components/button";
 import { Terminal } from "lucide-react";
-import { db } from "@repo/db";
 
 export default async function Page() {
-  const bananas = await db.query.bananas.findMany();
   return (
     <div className="flex items-center justify-center min-h-svh">
       <div className="flex flex-col items-center justify-center gap-4">
