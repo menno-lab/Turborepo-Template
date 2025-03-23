@@ -12,7 +12,7 @@ import {
 } from "@repo/ui/components/form";
 import { Input } from "@repo/ui/components/input";
 import { X } from "lucide-react";
-import { useActionState } from "react";
+import { startTransition, useActionState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Todo, todoSchema } from "@repo/db/schema";
 import { createTodo } from "./actions";
@@ -23,12 +23,14 @@ export function TodoForm() {
   });
 
   const form = useForm<Todo>({
-    resolver: zodResolver(todoSchema),
     defaultValues: {
       title: "",
       ...(state?.fields ?? {}),
     },
+    resolver: zodResolver(todoSchema),
   });
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <Form {...form}>
@@ -47,7 +49,17 @@ export function TodoForm() {
           </ul>
         </div>
       )}
-      <form className="space-y-8" action={submitAction}>
+      <form
+        ref={formRef}
+        className="space-y-8"
+        action={submitAction}
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          form.handleSubmit(() => {
+            startTransition(() => submitAction(new FormData(formRef.current!)));
+          })(evt);
+        }}
+      >
         <FormField
           control={form.control}
           name="title"
@@ -62,7 +74,7 @@ export function TodoForm() {
           )}
         />
         <Button type="submit" disabled={isPending}>
-          {isPending ? "Submitting..." : "Submit"}
+          {isPending ? "Submitting..." : "Create Todo"}
         </Button>
       </form>
     </Form>

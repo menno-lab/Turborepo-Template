@@ -3,6 +3,7 @@
 import { trpc } from "@/lib/trpc";
 import { todoSchema } from "@repo/db/schema";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export type FormState = {
   message: string;
@@ -19,10 +20,13 @@ export async function createTodo(
   try {
     const parsed = todoSchema.parse(formData);
     await trpc.todo.create(parsed);
+
     revalidatePath("/todos");
     return { message: "Todo created" };
   } catch (error) {
     console.error(error);
     return { message: "Failed to create todo" };
+  } finally {
+    redirect("/todos");
   }
 }

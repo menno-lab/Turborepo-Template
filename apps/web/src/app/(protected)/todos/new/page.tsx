@@ -1,10 +1,10 @@
+import { AppPage } from "@/components/app-page";
 import { TodoForm } from "../todo-form";
 
 export default function NewTodoPage() {
   return (
-    <div>
-      <h1>New Todo</h1>
+    <AppPage title="New Todo">
       <TodoForm />
-    </div>
+    </AppPage>
   );
 }
