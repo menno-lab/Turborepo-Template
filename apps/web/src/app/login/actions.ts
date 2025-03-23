@@ -7,9 +7,9 @@ export async function loginWithGoogle() {
   const { url } = await auth.api.signInSocial({
     body: {
       provider: "google",
-      callbackURL: "/todos",
+      callbackURL: "/dashboard",
       errorCallbackURL: "/login?error=true",
-      newUserCallbackURL: "/todos?onboarding=true",
+      newUserCallbackURL: "/dashboard?onboarding=true",
     },
   });
   if (!url) {
