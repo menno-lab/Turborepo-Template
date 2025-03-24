@@ -1,20 +1,9 @@
 "use client";
 
-import {
-  BookOpen,
-  Command,
-  Frame,
-  Home,
-  LifeBuoy,
-  List,
-  Map,
-  PieChart,
-  Send,
-} from "lucide-react";
+import { BookOpen, Command, Home, List } from "lucide-react";
 import * as React from "react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import { Session } from "@repo/db/auth";
 import {
@@ -64,35 +53,6 @@ const navItems = {
       ],
     },
   ],
-  secondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
 };
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
@@ -121,7 +81,6 @@ export function AppSidebar({ session, ...props }: AppSidebarProps) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={navItems.main} />
-        <NavSecondary items={navItems.secondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser session={session} />

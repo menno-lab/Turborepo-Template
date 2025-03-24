@@ -14,7 +14,7 @@ A batteries-included template for building modern full-stack web applications wi
 
 ## 🛠️ Getting Started
 
-1. Use this template to create a new repository:
+1. Use this template to create a new repository.
 
 2. Install dependencies:
 
