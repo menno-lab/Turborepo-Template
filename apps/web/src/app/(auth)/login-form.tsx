@@ -11,37 +11,26 @@ import {
   FormMessage,
 } from "@repo/ui/components/form";
 import { Input } from "@repo/ui/components/input";
-import { startTransition, useActionState, useEffect, useRef } from "react";
+import { startTransition, useActionState, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { signupWithEmail } from "./actions";
-import { SignupFormData, signupSchema } from "./schema";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { loginWithEmail } from "./actions";
+import { LoginFormData, loginSchema } from "./schema";
 
-export function SignupForm() {
-  const router = useRouter();
-  const [state, submitAction, isPending] = useActionState(signupWithEmail, {
+export function LoginForm() {
+  const [state, submitAction, isPending] = useActionState(loginWithEmail, {
     message: "",
+    success: false,
   });
 
-  const form = useForm<SignupFormData>({
+  const form = useForm<LoginFormData>({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
-    resolver: zodResolver(signupSchema),
+    resolver: zodResolver(loginSchema),
   });
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    if (!isPending && state.success) {
-      toast("Account has been created, you can log in with your credentials.");
-      router.push("/login");
-    }
-  }, [isPending, state, router]);
 
   return (
     <Form {...form}>
@@ -56,19 +45,6 @@ export function SignupForm() {
           })(evt);
         }}
       >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"
@@ -95,21 +71,8 @@ export function SignupForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <Button type="submit" className="w-full" disabled={isPending}>
-          Sign up
+          Sign in
         </Button>
         {state?.message && <p className="text-red-500">{state.message}</p>}
       </form>

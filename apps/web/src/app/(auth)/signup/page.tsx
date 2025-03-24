@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@repo/ui/components/card";
 import { Separator } from "@repo/ui/components/separator";
 import Link from "next/link";
 import { LoginWithGoogleButton } from "../login-google-form";
@@ -5,13 +12,13 @@ import { SignupForm } from "../signup-form";
 
 export default function SignupPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
-          <h2 className="mt-6 text-3xl font-bold tracking-tight text-foreground">
+    <div className="flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8 bg-muted">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">
             Create your account
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground">
+          </CardTitle>
+          <CardDescription>
             Already have an account?{" "}
             <Link
               href="/login"
@@ -19,14 +26,14 @@ export default function SignupPage() {
             >
               Sign in
             </Link>
-          </p>
-        </div>
-        <div className="mt-8 space-y-6 bg-muted p-6 rounded-lg shadow-md">
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
           <SignupForm />
           <Separator className="my-4" />
           <LoginWithGoogleButton />
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

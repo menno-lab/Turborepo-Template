@@ -28,6 +28,7 @@ const passwordSchema = z
 
 export const signupSchema = z
   .object({
+    name: z.string().min(1, { message: "Name is required" }),
     email: z.string().email(),
     password: passwordSchema,
     confirmPassword: z.string(),
@@ -37,4 +38,10 @@ export const signupSchema = z
     path: ["confirmPassword"],
   });
 
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: passwordSchema,
+});
+
 export type SignupFormData = z.infer<typeof signupSchema>;
+export type LoginFormData = z.infer<typeof loginSchema>;
