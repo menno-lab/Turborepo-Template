@@ -1,23 +1,20 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert, AlertDescription, AlertTitle } from "@repo/ui/components/alert";
 import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
-import { AlertCircle } from "lucide-react";
-import { Label } from "@repo/ui/components/label";
-import { startTransition, useActionState, useRef } from "react";
-import { signupWithEmail } from "./actions";
-import { useForm } from "react-hook-form";
-import { SignupFormData, signupSchema } from "./schema";
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
 } from "@repo/ui/components/form";
+import { Input } from "@repo/ui/components/input";
+import { startTransition, useActionState, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { signupWithEmail } from "./actions";
+import { SignupFormData, signupSchema } from "./schema";
 
 export function SignupForm() {
   const [state, submitAction, isPending] = useActionState(signupWithEmail, {
@@ -35,14 +32,6 @@ export function SignupForm() {
   });
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  const validationErrors = Object.values(form.formState.errors).flatMap(
-    (error) => error?.message
-  );
-
-  const errors = [validationErrors, ...(state.message ?? [])];
-
-  console.log(errors);
 
   return (
     <Form {...form}>
@@ -103,13 +92,6 @@ export function SignupForm() {
           Sign up
         </Button>
       </form>
-      {errors.length > 0 && (
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>{errors.join(", ")}</AlertDescription>
-        </Alert>
-      )}
     </Form>
   );
 }
