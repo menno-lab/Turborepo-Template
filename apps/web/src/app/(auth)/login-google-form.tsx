@@ -3,12 +3,12 @@
 import { Button } from "@repo/ui/components/button";
 import { loginWithGoogle } from "./actions";
 
-export function LoginForm() {
+export function LoginWithGoogleButton() {
   return (
     <form action={loginWithGoogle}>
       <Button
-        className="w-full flex items-center justify-center gap-2"
         variant="outline"
+        className="w-full flex items-center justify-center gap-2"
       >
         <svg viewBox="0 0 24 24" width="24" height="24" className="h-5 w-5">
           <path
