@@ -6,6 +6,7 @@ import { Label } from "@repo/ui/components/label";
 import { Checkbox } from "@repo/ui/components/checkbox";
 import { Pencil, Trash2 } from "lucide-react";
 import { toggleTodoDone, deleteTodo } from "./actions";
+import Link from "next/link";
 
 interface TodoItemProps {
   todo: Todo;
@@ -28,9 +29,11 @@ export function TodoItem({ todo }: TodoItemProps) {
         </Label>
       </div>
       <div className="flex gap-1">
-        <Button variant="ghost" size="icon">
-          <Pencil className="h-4 w-4" />
-          <span className="sr-only">Edit</span>
+        <Button variant="ghost" size="icon" asChild>
+          <Link href={`/todos/${todo.id}`}>
+            <Pencil className="h-4 w-4" />
+            <span className="sr-only">Edit</span>
+          </Link>
         </Button>
         <Button variant="ghost" size="icon" onClick={() => deleteTodo(todo)}>
           <Trash2 className="h-4 w-4" />

@@ -11,6 +11,11 @@ export type FormState = {
   issues?: string[];
 };
 
+export type TodoFormAction = (
+  prevState: FormState,
+  data: FormData
+) => Promise<FormState>;
+
 export async function createTodoFormAction(
   prevState: FormState,
   data: FormData
@@ -31,19 +36,24 @@ export async function createTodoFormAction(
 }
 
 export async function updateTodoFormAction(
+  todo: Todo,
   prevState: FormState,
   data: FormData
 ): Promise<FormState> {
   const formData = Object.fromEntries(data);
 
   try {
-    const parsed = todoUpdateSchema.parse(formData);
+    const payload = {
+      id: todo.id,
+      values: formData,
+    };
+    const parsed = todoUpdateSchema.parse(payload);
     await trpc.todo.update(parsed);
     revalidatePath("/todos");
     return { message: "Todo updated" };
   } catch (error) {
     console.error(error);
-    return { message: "Failed to create todo" };
+    return { message: "Failed to update todo" };
   } finally {
     redirect("/todos");
   }
