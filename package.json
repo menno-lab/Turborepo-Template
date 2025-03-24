@@ -9,7 +9,8 @@
     "typecheck": "turbo typecheck",
     "db:push": "turbo @repo/db#push",
     "db:studio": "turbo @repo/db#studio",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "ui:add": "pnpm --filter web shadcn:add"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",

@@ -1,56 +1,78 @@
-# shadcn/ui monorepo template
+# Modern Full-Stack Template
 
-This template is for creating a monorepo with shadcn/ui.
+A batteries-included template for building modern full-stack web applications with the latest technologies.
 
-## Usage
+## 🚀 Features
 
-```bash
-pnpm dlx shadcn@latest init
-```
+- **[Turborepo](https://turbo.build/)** - High-performance build system for JavaScript/TypeScript monorepos
+- **[Better-Auth](https://better-auth.com/)** - Secure, flexible authentication solution
+- **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible React components built with Radix UI and Tailwind CSS
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[tRPC](https://trpc.io/)** - End-to-end typesafe APIs made easy
+- **[Next.js 15](https://nextjs.org/)** - The React Framework for the Web with React 19
+- **[Drizzle](https://orm.drizzle.team/)** - TypeScript ORM for PostgreSQL
 
-## Adding components
+## 🛠️ Getting Started
 
-To add components to your app, run the following command at the root of your `web` app:
+1. Use this template to create a new repository:
 
-```bash
-pnpm dlx shadcn@latest add button -c apps/web
-```
+2. Install dependencies:
 
-This will place the ui components in the `packages/ui/src/components` directory.
+   ```bash
+   pnpm install
+   ```
 
-## Tailwind
+3. Set up your environment variables:
 
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
+   ```bash
+   cp apps/web/.env.example apps/web/.env.local
+   ```
 
-## Using components
+4. Start the database:
 
-To use the components in your app, import them from the `ui` package.
+   ```bash
+   docker compose up db -d
+   ```
 
-```tsx
-import { Button } from "@repo/ui/components/button";
-```
+5. Run the migrations:
 
-// scx notes
+   ```bash
+   pnpm db:push
+   ```
 
-- A CRM that focuses on giving the support agents the best experience
-- while others companies are going full in on the AI hype, we are going to focus on the human experience
-- Your customers want to talk to humans, not an ai bot.
-- We only use AI to help the support agents, not to replace them.
+6. Start the development server:
 
-# reddit saas post. The goal is to get users to try it out.
+   ```bash
+   pnpm dev
+   ```
 
-Title:
+## 📦 Project Structure
 
-Support agent turned software engineer, I worked with most of the popular CRM's out there and they are all terrible.
+├── apps
+│ └── web # Next.js application
+├── packages
+│ ├── api # tRPC API routes
+│ ├── db # Database schemas and utilities
+│ └── ui # Shared UI components
+├── tooling
+│ ├── eslint-config # ESLint configuration
+│ ├── typescript-config # TypeScript configuration
+└── package.json
 
-I'm building a CRM that focuses on giving the support agents the best experience, because they are the ones that will use it the most.
+## 📚 Documentation
 
-## AI Rant
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Better-Auth Documentation](https://www.better-auth.com/docs/)
+- [Turborepo Handbook](https://turbo.build/repo/docs)
+- [tRPC Documentation](https://trpc.io/docs)
+- [Drizzle Documentation](https://orm.drizzle.team/docs/overview)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [shadcn/ui Documentation](https://ui.shadcn.com/docs)
 
-I don't like AI. All these large CRM companies are going full in on the AI hype, but they are missing the point. If you contact support, you want to talk to a human. Not an AI bot. No matter how good the AI is.
+## 🤝 Contributing
 
-I'm still implementing some level of AI but only to help the support agents in their repetitive tasks.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Free Plan
+## 📝 License
 
-I'm giving away a free plan for 100 users. All I ask for in return is feedback.s
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

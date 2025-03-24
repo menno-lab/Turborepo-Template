@@ -53,9 +53,6 @@ importers:
       next-themes:
         specifier: ^0.4.4
         version: 0.4.6(react-dom@19.0.0)(react@19.0.0)
-      pg:
-        specifier: ^8.14.1
-        version: 8.14.1
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -72,6 +69,9 @@ importers:
       '@types/node':
         specifier: ^20
         version: 20.17.25
+      '@types/pg':
+        specifier: ^8.11.11
+        version: 8.11.11
       '@types/react':
         specifier: ^19
         version: 19.0.12
