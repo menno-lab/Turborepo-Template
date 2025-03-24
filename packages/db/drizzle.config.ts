@@ -1,9 +1,13 @@
+import dotenv from "dotenv";
 import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
-import dotenv from "dotenv";
+import path from "path";
+
+const projectRoot = path.resolve(__dirname, "..", "..");
+const webAppRoot = path.resolve(projectRoot, "apps", "web");
 
 dotenv.config({
-  path: ".env.local",
+  path: path.resolve(webAppRoot, ".env.local"),
 });
 
 export default defineConfig({
