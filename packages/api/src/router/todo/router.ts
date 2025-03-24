@@ -1,8 +1,14 @@
 import { z } from "zod";
 import { createTRPCRouter } from "../../init";
 import { protectedProcedure } from "../../procedures";
-import { todoSchema } from "@repo/db/schema";
-import { createTodo, getTodo, listTodos, updateTodo } from "./services";
+import { todoSchema, todoUpdateSchema } from "@repo/db/schema";
+import {
+  createTodo,
+  deleteTodo,
+  getTodo,
+  listTodos,
+  updateTodo,
+} from "./services";
 
 export const todoRouter = createTRPCRouter({
   create: protectedProcedure
@@ -26,9 +32,15 @@ export const todoRouter = createTRPCRouter({
       return await getTodo(ctx.db, userId, input.id);
     }),
   update: protectedProcedure
-    .input(z.object({ id: z.number(), values: todoSchema.partial() }))
+    .input(todoUpdateSchema)
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
       return await updateTodo(ctx.db, userId, input.id, input.values);
+    }),
+  delete: protectedProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user.id;
+      return await deleteTodo(ctx.db, userId, input.id);
     }),
 });

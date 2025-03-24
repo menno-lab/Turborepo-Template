@@ -30,4 +30,12 @@ export const todoSchema = z.object({
   }),
 });
 
-export type Todo = z.infer<typeof todoSchema>;
+export const todoUpdateSchema = z.object({
+  id: z.number(),
+  values: todoSchema.partial().extend({
+    completed: z.boolean().optional(),
+  }),
+});
+
+export type TodoInsert = z.infer<typeof todoSchema>;
+export type Todo = typeof todos.$inferSelect;

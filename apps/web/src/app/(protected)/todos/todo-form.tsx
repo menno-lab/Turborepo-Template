@@ -14,15 +14,18 @@ import { Input } from "@repo/ui/components/input";
 import { X } from "lucide-react";
 import { startTransition, useActionState, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Todo, todoSchema } from "@repo/db/schema";
-import { createTodo } from "./actions";
+import { TodoInsert, todoSchema } from "@repo/db/schema";
+import { createTodoFormAction } from "./actions";
 
 export function TodoForm() {
-  const [state, submitAction, isPending] = useActionState(createTodo, {
-    message: "",
-  });
+  const [state, submitAction, isPending] = useActionState(
+    createTodoFormAction,
+    {
+      message: "",
+    }
+  );
 
-  const form = useForm<Todo>({
+  const form = useForm<TodoInsert>({
     defaultValues: {
       title: "",
       ...(state?.fields ?? {}),
