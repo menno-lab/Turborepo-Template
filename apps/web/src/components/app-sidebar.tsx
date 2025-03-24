@@ -2,14 +2,14 @@
 
 import {
   BookOpen,
-  Bot,
   Command,
   Frame,
+  Home,
   LifeBuoy,
+  List,
   Map,
   PieChart,
   Send,
-  SquareTerminal,
 } from "lucide-react";
 import * as React from "react";
 
@@ -32,13 +32,13 @@ const navItems = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: SquareTerminal,
+      icon: Home,
       isActive: true,
     },
     {
       title: "Todos",
       url: "/todos",
-      icon: Bot,
+      icon: List,
     },
     {
       title: "Documentation",
