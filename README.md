@@ -1,6 +1,6 @@
 # Turborepo + Drizzle + tRPC + shadcn/ui + Better-Auth Template
 
-A batteries-included template for building modern full-stack web applications with the latest technologies.
+A batteries-included template for building modern full-stack web applications with the latest technologies. I created this template to speed up the development of my own projects and I hope it can be useful for you too.
 
 ## 🚀 Features
 
