@@ -46,19 +46,6 @@ A batteries-included template for building modern full-stack web applications wi
    pnpm dev
    ```
 
-## 📦 Project Structure
-
-├── apps
-│ └── web # Next.js application
-├── packages
-│ ├── api # tRPC API routes
-│ ├── db # Database schemas and utilities
-│ └── ui # Shared UI components
-├── tooling
-│ ├── eslint-config # ESLint configuration
-│ ├── typescript-config # TypeScript configuration
-└── package.json
-
 ## 📚 Documentation
 
 - [Next.js Documentation](https://nextjs.org/docs)
