@@ -22,8 +22,8 @@ export default function Home() {
               </div>
               <div className="space-x-4">
                 <Button asChild>
-                  <Link href="/login">
-                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/signup">
+                    Sign Up <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button variant="outline" asChild>
@@ -142,7 +142,7 @@ export default function Home() {
               </div>
               <div className="w-full max-w-sm space-y-2">
                 <Button className="w-full" size="lg" asChild>
-                  <Link href="/login">Sign Up Now</Link>
+                  <Link href="/signup">Sign Up Now</Link>
                 </Button>
               </div>
             </div>

@@ -14,6 +14,9 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
   },
+  emailAndPassword: {
+    enabled: true,
+  },
 });
 
 export type Session = Awaited<ReturnType<typeof auth.api.getSession>>;

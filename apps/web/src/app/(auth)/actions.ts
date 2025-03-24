@@ -3,6 +3,12 @@
 import { auth } from "@repo/db/auth";
 import { redirect } from "next/navigation";
 
+export type FormState = {
+  message: string;
+  fields?: Record<string, string>;
+  issues?: string[];
+};
+
 export async function loginWithGoogle() {
   const { url } = await auth.api.signInSocial({
     body: {
@@ -17,4 +23,13 @@ export async function loginWithGoogle() {
   }
 
   redirect(url);
+}
+
+export async function signupWithEmail(
+  _prevState: FormState,
+  data: FormData
+): Promise<FormState> {
+  const formData = Object.fromEntries(data);
+  console.log(formData);
+  return { message: "Signup successful" };
 }
