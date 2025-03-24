@@ -29,6 +29,13 @@
     },
     "studio": {
       "dependsOn": ["^studio"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
+    "e2e": {
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "env": ["CI"]
     }
   }
 }
