@@ -34,14 +34,19 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: "setup", testMatch: /.*\.setup\.ts/ },
+    { name: "db-setup", testMatch: /.*\.db.setup\.ts/ },
+    {
+      name: "auth-setup",
+      testMatch: /.*\.auth.setup\.ts/,
+      dependencies: ["db-setup"],
+    },
     {
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
         storageState: "playwright/.auth/user.json",
       },
-      dependencies: ["setup"],
+      dependencies: ["auth-setup"],
     },
 
     {
@@ -50,7 +55,7 @@ export default defineConfig({
         ...devices["Desktop Firefox"],
         storageState: "playwright/.auth/user.json",
       },
-      dependencies: ["setup"],
+      dependencies: ["auth-setup"],
     },
   ],
 

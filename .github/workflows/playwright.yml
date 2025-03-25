@@ -40,6 +40,8 @@ jobs:
         run: npm install -g pnpm && pnpm install
       - name: Install Playwright Browsers
         run: cd tooling/e2e && pnpm exec playwright install --with-deps
+      - name: Push database schema
+        run: pnpm db:push
       - name: Run Playwright tests
         run: pnpm test:e2e
       - uses: actions/upload-artifact@v4
