@@ -280,6 +280,9 @@ importers:
         specifier: workspace:*
         version: link:../../apps/web
     devDependencies:
+      '@faker-js/faker':
+        specifier: ^9.6.0
+        version: 9.6.0
       '@playwright/test':
         specifier: ^1.51.1
         version: 1.51.1
@@ -1101,6 +1104,11 @@ packages:
     dependencies:
       '@eslint/core': 0.12.0
       levn: 0.4.1
+    dev: true
+
+  /@faker-js/faker@9.6.0:
+    resolution: {integrity: sha512-3vm4by+B5lvsFPSyep3ELWmZfE3kicDtmemVpuwl1yH7tqtnHdsA6hG8fbXedMVdkzgtvzWoRgjSB4Q+FHnZiw==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
     dev: true
 
   /@floating-ui/core@1.6.9:

@@ -13,7 +13,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ui:add": "pnpm --filter web shadcn:add",
     "test:e2e": "turbo @repo/e2e-tests#test",
-    "test:e2e:ui": "turbo @repo/e2e-tests#test-ui",
+    "test:e2e:dev": "turbo @repo/e2e-tests#test:e2e:dev",
+    "test:e2e:ui": "turbo @repo/e2e-tests#test:e2e:ui",
     "test:e2e:report": "turbo @repo/e2e-tests#report",
     "kill-port": "fuser -k 3000/tcp"
   },
