@@ -1,10 +1,6 @@
-import { test as setup, expect } from "@playwright/test";
-import path, { dirname } from "path";
 import { faker } from "@faker-js/faker";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { expect, test as setup } from "@playwright/test";
+import path from "path";
 
 const authFile = path.join(__dirname, "../playwright/.auth/user.json");
 
