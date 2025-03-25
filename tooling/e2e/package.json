@@ -3,17 +3,22 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "playwright test",
+    "test-dev": "playwright test",
     "test-ui": "playwright test --ui",
+    "test": "start-server-and-test \"(cd ../../ && pnpm start)\" http://localhost:3000 \"playwright test\"",
     "report": "playwright show-report",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "web": "workspace:*"
   },
   "devDependencies": {
     "@playwright/test": "^1.51.1",
     "@types/node": "^20",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
+    "start-server-and-test": "^2.0.11",
     "typescript": "latest"
   }
 }

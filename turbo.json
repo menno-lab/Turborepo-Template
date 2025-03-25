@@ -9,33 +9,33 @@
     "DATABASE_URL"
   ],
   "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "start": {
+      "dependsOn": ["^start"]
+    },
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
-    "dev": {
-      "cache": false,
-      "persistent": true
+    "test": {
+      "env": ["CI"],
+      "dependsOn": ["^build"],
+      "outputs": ["playwright-report/**", "test-results/**"]
     },
     "push": {
       "dependsOn": ["^push"]
     },
     "studio": {
       "dependsOn": ["^studio"]
-    },
-    "test": {
-      "dependsOn": ["^test"]
-    },
-    "e2e": {
-      "passThroughEnv": ["PLAYWRIGHT_*"],
-      "env": ["CI"]
     }
   }
 }
