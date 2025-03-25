@@ -8,6 +8,9 @@ import { defineConfig, devices } from "@playwright/test";
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+console.log("config dir meta", import.meta.dirname);
+console.log("config dir __", __dirname);
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -39,7 +42,7 @@ export default defineConfig({
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
-        storageState: "playwright/.auth/user.json",
+        storageState: "tests/playwright/.auth/user.json",
       },
       dependencies: ["setup"],
     },
@@ -48,7 +51,7 @@ export default defineConfig({
       name: "firefox",
       use: {
         ...devices["Desktop Firefox"],
-        storageState: "playwright/.auth/user.json",
+        storageState: "tests/playwright/.auth/user.json",
       },
       dependencies: ["setup"],
     },
