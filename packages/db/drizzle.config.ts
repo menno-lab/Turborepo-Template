@@ -5,7 +5,6 @@ import path from "path";
 
 const projectRoot = path.resolve(__dirname, "..", "..");
 const webAppRoot = path.resolve(projectRoot, "apps", "web");
-
 dotenv.config({
   path: path.resolve(webAppRoot, ".env.local"),
 });

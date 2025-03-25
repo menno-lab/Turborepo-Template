@@ -9,11 +9,17 @@ export default async function TodosPage() {
 
   return (
     <AppPage title="Todos" className="relative h-full">
-      <ul className="space-y-3">
-        {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
-        ))}
-      </ul>
+      {!todos.length ? (
+        <div className="flex h-full items-center justify-center">
+          <p className="text-muted-foreground">No todos yet</p>
+        </div>
+      ) : (
+        <ul className="space-y-3">
+          {todos.map((todo) => (
+            <TodoItem key={todo.id} todo={todo} />
+          ))}
+        </ul>
+      )}
       <FloatingActionButton href="/todos/new">
         <Plus />
       </FloatingActionButton>

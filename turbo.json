@@ -9,18 +9,29 @@
     "DATABASE_URL"
   ],
   "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "start": {
+      "dependsOn": ["^start"]
+    },
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
-    "dev": {
+    "test": {
+      "env": ["CI"],
+      "dependsOn": ["^build"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "test:e2e:dev": {
       "cache": false,
       "persistent": true
     },
