@@ -8,4 +8,4 @@ node_modules/
 
 # Auth
 playwright/.auth/
-tests/playwright/.auth/
+ 
