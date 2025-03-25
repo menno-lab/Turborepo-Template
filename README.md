@@ -11,6 +11,7 @@ A batteries-included template for building modern full-stack web applications wi
 - **[tRPC](https://trpc.io/)** - End-to-end typesafe APIs made easy
 - **[Next.js 15](https://nextjs.org/)** - The React Framework for the Web with React 19
 - **[Drizzle](https://orm.drizzle.team/)** - TypeScript ORM for PostgreSQL
+- **[Playwright](https://playwright.dev/)** - E2E testing framework
 
 ## 🛠️ Getting Started
 
@@ -55,6 +56,7 @@ A batteries-included template for building modern full-stack web applications wi
 - [Drizzle Documentation](https://orm.drizzle.team/docs/overview)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [shadcn/ui Documentation](https://ui.shadcn.com/docs)
+- [Playwright Documentation](https://playwright.dev/docs/intro)
 
 ## 🤝 Contributing
 
