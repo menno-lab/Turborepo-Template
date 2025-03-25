@@ -9,7 +9,6 @@ import { defineConfig, devices } from "@playwright/test";
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 console.log("config dir meta", import.meta.dirname);
-console.log("config dir __", __dirname);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
