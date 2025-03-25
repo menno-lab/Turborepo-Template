@@ -1,14 +1,16 @@
 import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+import "dotenv/config";
+import path from "path";
 
 /**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
+ * Configures the environment variables for the web app for local e2e tests
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
-
-console.log("config dir meta", import.meta.dirname);
+const projectRoot = path.resolve(import.meta.dirname, "..", "..");
+const webAppRoot = path.resolve(projectRoot, "apps", "web");
+dotenv.config({
+  path: path.resolve(webAppRoot, ".env.local"),
+});
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -36,7 +38,14 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: "setup", testMatch: /.*\.setup\.ts/ },
+    { name: "setup", testMatch: /.*\.setup\.ts/, teardown: "cleanup db" },
+    {
+      name: "cleanup db",
+      testMatch: /.*\.teardown\.ts/,
+      use: {
+        storageState: "playwright/.auth/user.json",
+      },
+    },
     {
       name: "chromium",
       use: {
@@ -45,21 +54,5 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
-
-    {
-      name: "firefox",
-      use: {
-        ...devices["Desktop Firefox"],
-        storageState: "playwright/.auth/user.json",
-      },
-      dependencies: ["setup"],
-    },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: "cd ../../ && pnpm dev",
-  //   url: "http://localhost:3000",
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });

@@ -1,14 +1,18 @@
 import { faker } from "@faker-js/faker";
 import { expect, test as setup } from "@playwright/test";
+import { db } from "@repo/db";
+import { user } from "@repo/db/schema";
 import path from "path";
+import { eq } from "drizzle-orm";
 
-const dir = import.meta.dirname;
-
-const authFile = path.join(dir, "../playwright/.auth/user.json");
+const authFile = path.join(
+  import.meta.dirname,
+  "../playwright/.auth/user.json"
+);
 
 const firstName = faker.person.firstName();
 const lastName = faker.person.lastName();
-const email = faker.internet.email({ firstName, lastName });
+const email = faker.internet.email({ firstName, lastName }).toLowerCase();
 const password = "!Aa0" + faker.internet.password({ length: 8 });
 
 setup("authenticate", async ({ page }) => {
@@ -29,6 +33,12 @@ setup("authenticate", async ({ page }) => {
   await page.locator("[name='password']").fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page).toHaveURL("/dashboard");
+
+  const dbQuery = await db.query.user.findFirst({
+    where: eq(user.email, email),
+  });
+
+  expect(dbQuery).not.toBeNull();
 
   await page.context().storageState({ path: authFile });
 });
