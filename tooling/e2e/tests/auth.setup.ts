@@ -4,9 +4,7 @@ import path from "path";
 
 const dir = import.meta.dirname;
 
-console.log("dir", dir);
-
-const authFile = path.join(dir, "playwright/.auth/user.json");
+const authFile = path.join(dir, "../playwright/.auth/user.json");
 
 const firstName = faker.person.firstName();
 const lastName = faker.person.lastName();
